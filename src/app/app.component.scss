@@ -1,0 +1,80 @@
+.fill-remaining-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}
+
+$column-width:250px;
+$card-width: 240px;
+$card-list-padding: ($column-width - $card-width)/2;
+
+#board-outer {
+  background-color: #fff;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+#board-inner {
+  height: 100%;
+  overflow: hidden;
+}
+
+.board table {
+  border-collapse: collapse;
+  margin: 0px;
+}
+
+.board th,td {
+  min-width: $column-width;
+  max-width: $column-width;
+}
+.board th {
+  font-weight: normal;
+}
+.board td {
+  vertical-align: top;
+}
+ul.issues-list {
+  margin: 0px;
+  padding: $card-list-padding;
+  list-style: none;
+  display: block;
+}
+.issues-list li {
+  margin: 5px 0px;
+}
+.card {
+  min-width: $card-width;
+  max-width: $card-width;
+  min-height: 0px;
+  /* mdl-card sets overflow: hidden, which then truncates the pop-up menu*. z-index reset also seems to be needed */
+  overflow: visible;
+  z-index: auto;
+}
+$card-padding-x: 5px;
+.card-title {
+  padding: 3px $card-padding-x;
+  background-color: yellowgreen;
+  color: white;
+}
+$card-section-width: $card-width - (2 * $card-padding-x);
+.card-section {
+  padding: 2px $card-padding-x 0px;
+  min-width: $card-section-width;
+  max-width: $card-section-width;
+}
+.img-circle {
+  border-radius: 50%;
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+}
+.state-header {
+  font-size: 16px;
+  min-height: 35px;
+  max-height: 35px;
+  vertical-align: middle;
+}
+

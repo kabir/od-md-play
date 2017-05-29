@@ -1,0 +1,82 @@
+<md-toolbar color="primary" (window:resize)="onResize($event)">
+
+  <span>OverBård</span>
+  <span *ngIf="!isSmallDevice()">
+    <button md-button class="mat-button">Boards</button>
+    <button md-button>Config</button>
+    <button md-button>About</button>
+  </span>
+  <span *ngIf="isSmallDevice()" class="fill-remaining-space"></span>
+  <button *ngIf="isSmallDevice()" md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon> Menu</button>
+
+</md-toolbar>
+
+<md-menu #appMenu="mdMenu">
+  <button md-menu-item>Board</button>
+  <button md-menu-item>Config</button>
+</md-menu>
+
+<!--<md-card>
+  <md-card-title></md-card-title>
+</md-card>-->
+<div id="board-outer" >
+  <div if="board-inner">
+    <table class="board">
+      <thead>
+        <tr>
+          <th *ngFor="let state of states" class="visible">
+            <span class="state-header">{{state}}</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td *ngFor="let stateIssues of issueTable" class="visible">
+            <ul class="issues-list">
+              <li *ngFor="let issue of stateIssues">
+                <md-card class="card">
+                  <md-card-header class="card-header">
+<!--
+                    <div *ngIf="issue.assigneeInitials === '-'" md-card-avatar><md-icon>person</md-icon></div>
+                    <div *ngIf="issue.assigneeInitials != '-'" md-card-avatar><img class="img-circle" src="https://static.jboss.org/developer/gravatar/00aa85cb5ea8fd5882bab9765f40655e?d=mm&s=24"></div>
+-->
+                      <!--<md-card-title class="card-title" [ngStyle]="{width: '100%', display: 'flex'}">-->
+                        <span>{{issue.key}}</span>
+                        <span class="fill-remaining-space"></span>
+                        <span>{{issue.assigneeInitials}}</span>
+                      <!--</md-card-title>-->
+
+                  </md-card-header>
+                  <md-card-content>
+                    <img src="https://static.jboss.org/developer/gravatar/00aa85cb5ea8fd5882bab9765f40655e?d=mm&s=24" align="right" class="img-circle">
+                    {{issue.summary}}
+                  </md-card-content>
+                  <md-card-content>
+                    <span style="color: red">WFLY-12345</span>
+                    <span style="color: orange">JBEAP-1234</span>
+                    <span style="color: green">ELY-123</span>
+                  </md-card-content>
+                </md-card>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--<md-card class="example-card" *ngFor="let data of (myData ? myData.slice(0,10): []); let i = index">
+
+  <img md-card-image src="{{ data.url }}">
+  <md-card-header>
+    <md-card-title>{{ data.title }}</md-card-title>
+  </md-card-header>
+
+  <md-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+
+</md-card>-->
